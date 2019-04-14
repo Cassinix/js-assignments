@@ -31,7 +31,8 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-   throw new Error('Not implemented');
+   let template = '[\\da-fA-F]';
+   return new RegExp(`^\\{${template}{8}-${template}{4}-${template}{4}-${template}{4}-${template}{12}\\}$`, 'i');
 }
 
 
@@ -91,7 +92,8 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-   throw new Error('Not implemented');
+   var template = '(?=0*[1-9]+0*)\\d';
+   return new RegExp(`${template}{3}-${template}{2}-${template}{4}`);
 }
 
 
