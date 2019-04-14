@@ -361,7 +361,8 @@ function isBracketsBalanced(str) {
  *
  */
 function timespanToHumanString(startDate, endDate) {
-    throw new Error('Not implemented');
+    const time = endDate - startDate;
+    return time;
 }
 
 
@@ -385,15 +386,13 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    let res = [];
-
+    let result = [];
     while (num >= n) {
-        res.push(num % n);
+        result.push(num % n);
         num = Math.floor(num / n);
     }
-    res.push(num);
-
-    return res.reverse().join("");
+    result.push(num);
+    return result.reverse().join("");
 }
 
 
@@ -412,13 +411,13 @@ function toNaryString(num, n) {
 function getCommonDirectoryPath(pathes) {
     const arr = pathes.map(x => x.split('\/')),
           minLength = Math.min(...arr.map(z => z.length));
-    let res = '';
+    let result = '';
     for (let i = 0; i < minLength; i++) {
         const step = arr.map(x => x[i]);
         if (step.filter(y => y === step[0]).length == step.length)
-            res = res + step[0] + '\/';
+        result = result + step[0] + '\/';
         else   
-            return res;
+        return result;
     }
 }
 
@@ -477,7 +476,6 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    let trines =[];
     for (let i = 0; i < 3; i++) {
         if (position[i].join('') === 'XXX' || position.map(x => x[i]).join('') === 'XXX')
             return 'X';
