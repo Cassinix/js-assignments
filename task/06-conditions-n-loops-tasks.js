@@ -324,7 +324,6 @@ function isBracketsBalanced(str) {
         else 
             stack.push(str[i]);
     }   
-
     return (!stack.length);
 }
 
@@ -465,7 +464,17 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    throw new Error('Not implemented');
+    let m1Rows = m1.length, m1Cols = m1[0].length, m2Cols = m2[0].length,
+        m = new Array(m1Rows);  
+        for (let r = 0; r < m1Rows; ++r) {
+            m[r] = new Array(m2Cols); 
+            for (let c = 0; c < m2Cols; ++c) {
+                m[r][c] = 0;             
+                for (let i = 0; i < m1Cols; ++i) 
+                    m[r][c] += m1[r][i] * m2[i][c];
+            }
+        }
+    return m;
 }
 
 
