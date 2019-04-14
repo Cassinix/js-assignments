@@ -94,11 +94,8 @@ function getPolynom(...args) {
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
 function memoize(func) {
-    const cache = {};
-    return function() {
-      let args = JSON.stringify(arguments);
-      return cache.hasOwnProperty(args) ? cache[args] : (cache[args] = func(...arguments));
-    }
+    const fn = func();
+    return () => fn;
 }
 
 
@@ -118,9 +115,12 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
-    return function(){
-        return func()()();
-    }; 
+    return function() {
+        for (let i = 0; i <= attempts; i++)
+            try {
+                return func();
+            } catch (error) {}
+    };
 }
 
 
