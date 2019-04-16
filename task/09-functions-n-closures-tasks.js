@@ -190,9 +190,9 @@ function partialUsingArguments(fn, ...args) {
 function getIdGeneratorFunction(startFrom) {
     let last = startFrom;
     return function() {
-        const res = last;
+        const result = last;
         last++;
-        return res;
+        return result;
     }
 }
 

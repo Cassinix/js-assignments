@@ -46,9 +46,12 @@ function findStringInSnakingPuzzle(puzzle, searchStr) {
  */
 function getPermutations(chars) {
     let result = [];
-    if (chars.length == 1) return [chars];
-    if (chars.length == 2) return [chars, chars[1] + chars[0]];
-  
+    if (chars.length == 1) {
+        return [chars];
+    }
+    if (chars.length == 2) {
+        return [chars, chars[1] + chars[0]];
+    } 
     chars.split('').forEach(  (chr, idx, arr) => {
         let sub = [].concat(arr); 
         sub.splice(idx, 1);
