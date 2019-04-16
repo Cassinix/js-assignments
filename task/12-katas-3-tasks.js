@@ -47,13 +47,13 @@ function findStringInSnakingPuzzle(puzzle, searchStr) {
 function getPermutations(chars) {
     let result = [];
     if (chars.length == 1) return [chars];
-    if (chars.length == 2) return [chars, chars[1]+chars[0]];
+    if (chars.length == 2) return [chars, chars[1] + chars[0]];
   
-    chars.split('').forEach(function (chr, idx, arr) {
-        var sub = [].concat(arr); 
+    chars.split('').forEach(  (chr, idx, arr) => {
+        let sub = [].concat(arr); 
         sub.splice(idx, 1);
-        getPermutations(sub.join('')).forEach(function (perm) {
-            result.push(chr+perm);
+        getPermutations(sub.join('')).forEach( (perm) => {
+            result.push(chr + perm);
         });
     });
   
